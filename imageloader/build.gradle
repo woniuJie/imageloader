@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+apply from: 'upload-archives.gradle'
+
+android {
+    compileSdkVersion rootProject.ext.android['compileSdkVersion']
+    buildToolsVersion rootProject.ext.android['buildToolsVersion']
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android['minSdkVersion']
+        targetSdkVersion rootProject.ext.android['targetSdkVersion']
+        versionCode 1
+        versionName "2.1"
+//        versionName "1.0-SNAPSHOT"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    compileOnly rootProject.ext.dependencies["support-annotations"]
+    compileOnly rootProject.ext.dependencies["support-core-utils"]
+
+
+    compileOnly "com.google.code.findbugs:jsr305:3.0.0"
+
+
+    api rootProject.ext.dependencies["frescoWebSupport"]
+    implementation rootProject.ext.dependencies["support-v4"]
+    api rootProject.ext.dependencies["frescoGif"]
+    api rootProject.ext.dependencies["imagepipeline"]
+
+    api(rootProject.ext.dependencies["fresco"]) {
+        exclude module: 'support-v4'
+        exclude group: 'com.nineoldandroids', module: 'library'
+    }
+    implementation rootProject.ext.dependencies["nineOldAndroids"]
+    api rootProject.ext.dependencies["okhttp3-logging-interceptor"]
+}

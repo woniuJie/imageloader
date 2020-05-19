@@ -1,0 +1,11 @@
+# imageloader #
+## 简介 ##
+imageload是一个图片加载库，使用fresco框架，网络请求使用OkHttp框架。fresco详细配置见FrescoConfig，
+okhttp详细配置见OkHttpConfig
+
+
+#ZoomableDraweeView更新之后支持多手势listener，
+调用原生的onClickListener、onLongClickListener会默认添加一个TapListener,
+所以 onClickListener、onLongClickListener跟setTapListener相互覆盖，
+建议如果只是监听点击长按还是用原来的方式，
+如果需要更多的东西则调用setTapListener,调用时要放在onClickListener、onLongClickListener之后
